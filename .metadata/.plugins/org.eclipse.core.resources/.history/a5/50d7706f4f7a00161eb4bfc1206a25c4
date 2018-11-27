@@ -1,0 +1,63 @@
+package com.zy.dsgl;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Process;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.hoolai.open.fastaccess.channel.AbstractChannelInterfaceImpl;
+import com.hoolai.open.fastaccess.channel.ExitCallback;
+import com.hoolai.open.fastaccess.channel.FastSdk;
+import com.hoolai.open.fastaccess.channel.GetServerListCallback;
+import com.hoolai.open.fastaccess.channel.InitCallback;
+import com.hoolai.open.fastaccess.channel.LoginCallback;
+import com.hoolai.open.fastaccess.channel.PayCallback;
+import com.hoolai.open.fastaccess.channel.ReturnValue;
+import com.hoolai.open.fastaccess.channel.SelectServerCallback;
+import com.hoolai.open.fastaccess.channel.ServerInfos;
+import com.hoolai.open.fastaccess.channel.UserLoginResponse;
+import com.hoolai.open.fastaccess.channel.bi.SendBICallback;
+import com.unity3d.player.UnityPlayer;
+import com.unity3d.player.UnityPlayerActivity;
+
+public class MainActivity extends UnityPlayerActivity {
+
+	public static final String TAG = AbstractChannelInterfaceImpl.TAG + "_Unity";
+
+	private boolean isInit = false;
+
+	Handler mHandler = new Handler();
+
+	private static final int Type_Init_Fail = 1;
+	private static final int Type_Init_Success = 2;
+	private static final int Type_Login_Fail = 3;
+	private static final int Type_Login_Success = 4;
+	private static final int Type_Logout = 5;
+	private static final int Type_Pay_Fail = 6;
+	private static final int Type_Pay_Success = 7;
+	private static final int Type_Exit_Channel = 8;
+	private static final int Type_Exit_Game = 9;
+	private static final int Type_GetServers_Success = 10;
+	private static final int Type_GetServers_Fail = 11;
+	private static final int Type_SelectServer_Success = 12;
+	private static final int Type_SelectServer_Fail = 13;
+
+	private static void MyUnitySendMessage(String arg0, String arg1, String arg2) {
+		Log.d(TAG, "MyUnitySendMessage:arg0=" + arg0 + ",arg1=" + arg1 + ",arg2=" + arg2);
+		UnityPlayer.UnitySendMessage(arg0, arg1, arg2);
+	}
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+      
+    }
+}
